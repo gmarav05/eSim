@@ -61,7 +61,7 @@ Detected Ubuntu Version:
 Unsupported Ubuntu version: 25.04 ()
 ```
 
-**Screenshot:** [screenshots/issue-1.png]
+**Screenshot:** ![Issue 1 Screenshot](screenshots/issue-1.png)
 
 **Root Cause:**
 The `install-eSim.sh` script uses a `case` statement to route to a version-specific
@@ -105,7 +105,7 @@ immediate successor and shares the majority of its package ecosystem with 24.04.
     ;;
 ```
 
-**Screenshot after fix:** [screenshots/issue-1-fix.png]
+**Screenshot after fix:** ![Issue 1 Fix](screenshots/issue-1-fix.png)
 
 **Status:** Fixed
 
@@ -125,7 +125,7 @@ error: metadata-generation-failed
 Aborting Installation...
 ```
 
-**Screenshot:** [screenshots/issue-2.png]
+**Screenshot:** ![Issue 2](screenshots/issue-2.png)
 
 **Root Cause:**
 The installer attempts `pip3 install PyQt5` inside a Python virtualenv. On Ubuntu 25.04,
@@ -163,7 +163,7 @@ total-vm:7155484kB, anon-rss:3167564kB
 Aborting Installation...
 ```
 
-**Screenshot:** [screenshots/issue-3.png]
+**Screenshot:** ![Issue 3](screenshots/issue-3.png)
 
 > This issue is a continuation of Issue 2, encountered during the intermediate debugging
 > step before the apt-based fix was applied.
@@ -183,7 +183,7 @@ in the script. The apt-installed version uses ABI3 shared objects (`QtCore.abi3.
 `QtWidgets.abi3.so` etc.) which are compatible with Python 3.13 and require zero
 compilation.
 
-**Screenshot after fix:** [screenshots/issue-2-fix.png]
+**Screenshot after fix:** ![Issue 2 Fix](screenshots/issue-2-fix.png)
 
 **Status:** Fixed
 
@@ -200,7 +200,7 @@ E: The repository '...kicad-6.0-releases/ubuntu plucky Release'
 Aborting Installation...
 ```
 
-**Screenshot:** [screenshots/issue-4.png]
+**Screenshot:** ![KiCad PPA 404 Error on Ubuntu 25.04](screenshots/issue-4.png)
 
 **Root Cause:**
 The installer adds the PPA `ppa:kicad/kicad-6.0-releases`. This PPA was never updated
@@ -228,7 +228,7 @@ kicad:arm64=8.0.9-0~ubuntu25.04.1 Depends libgit2-1.8 (>= 1.8.0)
   but none of the choices are installable: [no choices]
 ```
 
-**Screenshot:** [screenshots/issue-5.png]
+**Screenshot:** ![Issue 5](screenshots/issue-5.png)
 
 **Root Cause:**
 Ubuntu 25.04 ships `libgit2-1.9`. The KiCad 8.0.9 package was built against
@@ -316,7 +316,7 @@ cp: cannot create regular file '/home/aravind/Desktop/': Not a directory
 Aborting Installation...
 ```
 
-**Screenshot:** [screenshots/issue-7.png]
+**Screenshot:** ![Issue 7](screenshots/issue-7.png)
 
 **Root Cause:**
 The `createDesktopStartScript` function in the installer copies `esim.desktop` to
@@ -346,7 +346,7 @@ File ".../.esim/env/lib/python3.13/.../Application.py", line 33
   from PyQt5 import QtGui, QtCore, QtWidgets
 ```
 
-**Screenshot:** [screenshots/issue-8.png]
+**Screenshot:** ![Issue 8](screenshots/issue-8.png)
 
 **Root Cause:**
 eSim launches inside an isolated Python virtualenv (`~/.esim/env`). Although PyQt5
@@ -461,7 +461,7 @@ installer silently reverts them.
 After applying all fixes and workarounds, eSim 2.5 was successfully installed and
 launched on Ubuntu 25.04 ARM64. 
 
-**Screenshot:** [screenshots/esim-running.png]
+**Screenshot:** ![eSim Running](screenshots/esim-running.png)
 
 Components installed:
 - Core eSim application
