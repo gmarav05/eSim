@@ -46,6 +46,13 @@ run_version_script() {
         "24.04")
             SCRIPT="$SCRIPT_DIR/install-nghdl-24.04.sh"
             ;;
+        "25.04")
+            # Fall back to 24.04 script — 25.04 shares most dependencies
+            # Note: this file is extracted from nghdl.zip via 'unzip -o' on
+            # every installer run, so patches here must also be applied inside
+            # the zip to persist across runs.
+            SCRIPT="$SCRIPT_DIR/install-nghdl-24.04.sh"
+            ;;
         *)
             echo "Unsupported Ubuntu version: $VERSION_ID ($FULL_VERSION)"
             exit 1
