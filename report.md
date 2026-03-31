@@ -1,6 +1,6 @@
-# eSim 2.5 Installation Debug Report
+# eSim 2.5 Installation Debug Report (Ubuntu 25.04 Compatibility)
 ### eSim Summer Fellowship 2026 — Task 4 Submission
-**Author:** Gm Aravind (gmarav05) | **Date:** 29–30 March 2026
+**Author:** Gm Aravind (gmarav05) | **Date:** 29–31 March 2026
 
 ---
 
@@ -533,3 +533,20 @@ exposes multiple compatibility gaps across different layers of the stack:
 - **Environment assumptions:** The installer assumes a desktop environment exists
   (`~/Desktop/`) and that PyQt5 installed via apt will be visible inside a virtualenv —
   both assumptions fail on a server install.
+
+## 9. Proposed Fixes for eSim 
+
+**Version detection:**
+Add Ubuntu 25.04 support in `install-eSim.sh` and `install-nghdl.sh`.
+
+**PyQt5 installation:**
+Detect Python version at runtime and use `apt install python3-pyqt5` for Python 3.13 and above, instead of pip.
+
+**KiCad dependency:**
+Wait for KiCad PPA to rebuild against libgit2-1.9, or document the limitation clearly in the installer output.
+
+**Archive extraction:**
+Replace `unzip -o` with `unzip -n` in `installNghdl` function, or skip extraction if files already exist.
+
+**Desktop directory:**
+Add `mkdir -p ~/Desktop` before the cp command in `createDesktopStartScript`.
